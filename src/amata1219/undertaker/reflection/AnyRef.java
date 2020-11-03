@@ -54,7 +54,7 @@ public class AnyRef {
     public AnyRef field(String name) {
         Field field = accessibleField(name);
         try {
-            return Reflect.on(field.getType(), field.get(name));
+            return Reflect.on(field.getType(), field.get(instance));
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
