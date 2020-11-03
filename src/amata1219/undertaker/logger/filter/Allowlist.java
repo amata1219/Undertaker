@@ -11,7 +11,7 @@ public class Allowlist implements PacketFilter {
     }
 
     @Override
-    public boolean shouldIgnore(String packetName) {
-        return !allowedPacketNames.contains(packetName);
+    public boolean shouldAllow(String packetName) {
+        return allowedPacketNames.contains(packetName);
     }
 }

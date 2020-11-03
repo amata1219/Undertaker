@@ -1,5 +1,6 @@
 package amata1219.undertaker.logger;
 
+import amata1219.undertaker.event.CancellablePacketEvent;
 import amata1219.undertaker.event.PacketEvent;
 import amata1219.undertaker.listener.PacketReceivingListener;
 import amata1219.undertaker.listener.PacketSendingListener;
@@ -24,13 +25,13 @@ public class PacketLogger implements PacketSendingListener, PacketReceivingListe
     }
 
     @Override
-    public void onSending(PacketEvent event) {
-        if (!packetSendingFilter.shouldIgnore(event.packetName)) log(event, PacketType.SENDING);
+    public void onSending(CancellablePacketEvent event) {
+        if (packetSendingFilter.shouldAllow(event.packetName)) log(event, PacketType.SENDING);
     }
 
     @Override
-    public void onReceiving(PacketEvent event) {
-        if (!packetReceivingFilter.shouldIgnore(event.packetName)) log(event, PacketType.RECEIVING);
+    public void onReceiving(CancellablePacketEvent event) {
+        if (packetReceivingFilter.shouldAllow(event.packetName)) log(event, PacketType.RECEIVING);
     }
 
     private void log(PacketEvent event, PacketType type) {

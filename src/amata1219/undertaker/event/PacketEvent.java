@@ -7,7 +7,6 @@ public class PacketEvent {
     public final Player player;
     public final String packetName;
     public final Object packet;
-    public boolean isCancelled;
 
     public PacketEvent(Player player, Object packet) {
         this.player = player;

@@ -11,7 +11,7 @@ public class Denylist implements PacketFilter {
     }
 
     @Override
-    public boolean shouldIgnore(String packetName) {
-        return deniedPacketNames.contains(packetName);
+    public boolean shouldAllow(String packetName) {
+        return !deniedPacketNames.contains(packetName);
     }
 }
